@@ -15,12 +15,37 @@ const titleClickHandler = function(event) {
     const articleSelector = clickedElement.getAttribute('href'); 
     const targetArticle = document.querySelector(articleSelector);
     console.log(targetArticle);
-    targetArticle.classList.add('active');
-    
+    targetArticle.classList.add('active'); 
 }
 
-const links = document.querySelectorAll('.list a');
+const optArticleSelector = '.post';
+const optTitleSelector = '.post-title';
+const optTitleListSelector = '.titles';
 
-for (let link of links) {
-    link.addEventListener('click', titleClickHandler);
+const generateTitleLinks = function(event) {
+    let titleList = document.querySelector(optTitleListSelector); 
+    titleList.innerHTML = '';
+
+    const articles = document.querySelectorAll(optArticleSelector); 
+    let html = ''; 
+    for (let article of articles) {
+        const articleId = article.getAttribute('id');
+        const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+        console.log(articleTitle);
+        const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+
+        html += linkHTML; 
+        console.log(html);
+    }
+    titleList.insertAdjacentHTML('beforeend', html);
+    const links = document.querySelectorAll('.list a');
+    for (let link of links) {
+        link.addEventListener('click', titleClickHandler);
+    }
 }
+
+generateTitleLinks();
+
+
+
+
