@@ -32,7 +32,7 @@ function generateTitleLinks(customSelector = '') {
 
   const articles = document.querySelectorAll(optArticleSelector + customSelector);
 
-  console.log('dupa dupa dupa duap', customSelector);
+
   let html = '';
   for (let article of articles) {
     const articleId = article.getAttribute('id');
@@ -137,7 +137,7 @@ function authorClickHandler(event) {
   }
   generateTitleLinks('[data-author="' + author + '"]');
 
-  console.log('DUDPA DUPA DUPA');
+
 }
 function addClickListenersToAuthors() {
   const allClickableAuthors = document.querySelectorAll('a[href^="#author-"]');
